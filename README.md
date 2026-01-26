@@ -56,8 +56,10 @@ This project combines **signature-based detection**, **anomaly detection**, and 
 *(Replace these with your actual image paths from GitHub)*
 
 ```
-![Dashboard](images/dashboard_1.png)
-![More Charts](images/dashboard_2.png)
+
+![Mo![Screenshot 1 (1)](https://github.com/user-attachments/assets/fa4a69b9-cbdd-482d-8047-9ceb0db5e51b)
+![Screenshot 2](https://github.com/user-attachments/assets/4a4a92e0-5f9d-400c-9f8a-7535928a2c81)
+
 ```
 
 ---
@@ -178,4 +180,5 @@ Do **not** use it on networks without proper permission.
 ## ⭐ Support
 
 If this project helped you, please consider giving it a **⭐ star on GitHub** — it motivates future updates!
+
 
