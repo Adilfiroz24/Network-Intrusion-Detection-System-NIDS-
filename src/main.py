@@ -26,7 +26,7 @@ class NIDSController:
                     import ctypes
                     if not ctypes.windll.shell32.IsUserAnAdmin():
                         self.logger.warning("Not running as Administrator. Packet capture may not work.")
-                except:
+                except Exception:
                     pass
             
             init_db()
@@ -76,7 +76,8 @@ class NIDSController:
 
 def signal_handler(sig, frame):
     print("\nShutting down NIDS...")
-    controller.stop()
+    if 'controller' in globals():
+        controller.stop()
     sys.exit(0)
 
 if __name__ == "__main__":
@@ -85,8 +86,13 @@ if __name__ == "__main__":
     
     controller = NIDSController()
     
-    signal.signal(signal.SIGINT, signal_handler)
-    signal.signal(signal.SIGTERM, signal_handler)
+    # Safely attach signals only if running in the main execution thread
+    if threading.current_thread() is threading.main_thread():
+        try:
+            signal.signal(signal.SIGINT, signal_handler)
+            signal.signal(signal.SIGTERM, signal_handler)
+        except (ValueError, AttributeError):
+            pass
     
     try:
         controller.start()
